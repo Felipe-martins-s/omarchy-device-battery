@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "flpems.device-battery",
+  "name": "Device Battery",
+  "version": "0.5.0",
+  "author": "flpems",
+  "license": "MIT",
+  "description": "Bluetooth battery readings with BudsLink details, native panels and per-device text or icons.",
+  "kinds": ["bar-widget"],
+  "activation": "on-demand",
+  "entryPoints": { "barWidget": "BarWidget.qml" },
+  "barWidget": {
+    "displayName": "Device Battery",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": { "displayMode": "Letras", "language": "pt-BR" },
+    "schema": [
+      {
+        "key": "language",
+        "type": "enum",
+        "label": "Language / Idioma",
+        "description": "pt-BR: Português (Brasil). en: English.",
+        "options": ["pt-BR", "en"],
+        "defaultValue": "pt-BR"
+      },
+      {
+        "key": "displayMode",
+        "type": "enum",
+        "label": "Exibição padrão das baterias",
+        "description": "Padrão para dispositivos sem preferência própria. Clique direito no widget configura cada dispositivo.",
+        "options": ["Letras", "Ícones"],
+        "defaultValue": "Letras"
+      }
+    ]
+  }
+}

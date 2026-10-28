@@ -1,0 +1,23 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  source-merging:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install GJS
+        run: sudo apt-get update && sudo apt-get install -y gjs
+      - name: Validate manifest JSON
+        run: python3 -m json.tool manifest.json > /dev/null
+      - name: Test device merging
+        run: gjs -m tests.js
+      - name: Test translations
+        run: gjs -m tests-i18n.js
